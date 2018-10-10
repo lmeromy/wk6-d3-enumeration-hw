@@ -33,30 +33,16 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
 };
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
+  // // DOES NOT USE ENUMERATION! but it does the job well:
+  let transportArr = this.getModesOfTransport();
+  return uniqueTransport = Array.from(new Set(transportArr));
+  // a Set object lets you store unique values of any type
 
-    // either use filter with indexOf, or use set and convert that back to an array with Array.from(mySet) or look up another method to find unique values using enumeration
-  // var a = ["1", "1", "2", "3", "3", "1"];
-  // var unique = a.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-
-  let transport_array = this.getModesOfTransport();
-  return list = transport_array.filter((x, i, a) => a.indexOf(x) == i)
-
-// x --> item in array
-// i --> index of item
-// a --> array reference, (in this case "list")
-
-
-  // // THIS DOES NOT USE ENUMERATION! but it works :
-  // let transport_unique = [];
-  // // const result = this.journeys.includes((journey) {
-  // // solution adapted from stackoverflow:
-  // for(let i = 0; i < this.journeys.length; i++){
-  //   if(!transport_unique.includes(this.journeys[i].transport)){
-  //     transport_unique.push(this.journeys[i].transport);
-  //   }
-  // }
-  // return transport_unique;
-
+  // // Solution using enumeration:
+  // let uniqueTransport = this.getModesOfTransport();
+  //
+  // return uniqueTransport.filter((element, index) => uniqueTransport.indexOf(element) === index);
+  // // indexOf - returns Only the first index item that fulfils condition
 };
 
 
